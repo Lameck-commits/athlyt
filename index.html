@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHLYT — Transform Your Body. Own Your Power.</title>
+  <meta name="description" content="Premium athletic apparel for those who train with purpose. ATHLYT performance tanks, hoodies & cargos." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            athlyt: {
+              blue: '#00A3FF',
+              dark: '#0a0a0b',
+              card: '#141416',
+              muted: '#8b8b93'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { background: #0a0a0b; }
+    .hero-gradient {
+      background: linear-gradient(to top, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.4) 40%, transparent 70%);
+    }
+    .product-card:hover img {
+      transform: scale(1.04);
+    }
+    .product-card img {
+      transition: transform 0.5s ease;
+    }
+    .nav-blur {
+      backdrop-filter: blur(12px);
+      background: rgba(10,10,11,0.75);
+    }
+    .cart-badge {
+      animation: pop 0.3s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.6); }
+      70% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-height: 90vh;
+      max-width: 90vw;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="text-white font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-3 group">
+          <img src="images/logo.png" alt="ATHLYT" class="h-9 w-9 object-contain" />
+          <span class="text-xl font-black tracking-tighter hidden sm:inline">ATH<span class="text-athlyt-blue">LYT</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+          <a href="#shop" class="hover:text-white transition">Shop</a>
+          <a href="#lifestyle" class="hover:text-white transition">Lifestyle</a>
+          <a href="#story" class="hover:text-white transition">Our Story</a>
+        </div>
+        <button id="cartBtn" class="relative flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 transition border border-white/10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="text-sm font-medium">Cart</span>
+          <span id="cartCount" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-athlyt-blue text-xs font-bold flex items-center justify-center text-black hidden">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative h-[100svh] min-h-[640px] flex items-end overflow-hidden">
+    <img src="images/tank-warehouse.png" alt="ATHLYT Power" class="absolute inset-0 w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 w-full">
+      <div class="max-w-2xl">
+        <p class="text-athlyt-blue font-semibold tracking-widest text-sm uppercase mb-4">New Collection</p>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-tight mb-6">
+          TRANSFORM<br>YOUR BODY.<br><span class="text-athlyt-blue">OWN YOUR POWER.</span>
+        </h1>
+        <p class="text-lg text-white/70 mb-8 max-w-md">
+          Premium performance apparel engineered for the serious athlete. Built to move with you. Designed to stand out.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#shop" class="inline-flex items-center justify-center px-8 py-4 bg-athlyt-blue text-black font-bold rounded-full hover:bg-white transition text-sm tracking-wide">
+            SHOP THE COLLECTION
+          </a>
+          <a href="#lifestyle" class="inline-flex items-center justify-center px-8 py-4 border border-white/30 font-semibold rounded-full hover:bg-white/10 transition text-sm">
+            VIEW LOOKBOOK
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-2">The Collection</h2>
+          <p class="text-white/50">Engineered for performance. Styled for presence.</p>
+        </div>
+        <div class="flex gap-3 text-sm">
+          <button class="filter-btn px-4 py-2 rounded-full bg-athlyt-blue text-black font-semibold" data-filter="all">All</button>
+          <button class="filter-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 transition" data-filter="tops">Tops</button>
+          <button class="filter-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 transition" data-filter="bottoms">Bottoms</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+        <!-- Product 1 -->
+        <article class="product-card group" data-category="tops">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/tank-cable.png')">
+            <img src="images/tank-cable.png" alt="ATHLYT Performance Tank" class="w-full h-full object-cover" />
+            <div class="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur text-xs font-semibold rounded-full">Best Seller</div>
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">Performance Tank</h3>
+              <p class="text-white/50 text-sm mt-1">Black / Electric Blue</p>
+            </div>
+            <p class="font-bold text-lg">$48</p>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Moisture-wicking, sculpted fit. Built for heavy sessions.</p>
+          <button onclick="addToCart('Performance Tank', 48)" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-athlyt-blue transition">
+            ADD TO CART
+          </button>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card group" data-category="tops">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/hoodie-gym.png')">
+            <img src="images/hoodie-gym.png" alt="ATHLYT Power Hoodie" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">Power Hoodie</h3>
+              <p class="text-white/50 text-sm mt-1">Black / Blue Side Panels</p>
+            </div>
+            <p class="font-bold text-lg">$78</p>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Heavyweight fleece. "Transform Your Body. Own Your Power."</p>
+          <button onclick="addToCart('Power Hoodie', 78)" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-athlyt-blue transition">
+            ADD TO CART
+          </button>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card group" data-category="bottoms">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/tank-cable.png')">
+            <img src="images/tank-cable.png" alt="ATHLYT Cargo Pants" class="w-full h-full object-cover object-bottom" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-center">
+              <span class="text-xs font-medium text-white/80">Shown with matching tank</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">Cargo Training Pants</h3>
+              <p class="text-white/50 text-sm mt-1">Black / Blue Accents</p>
+            </div>
+            <p class="font-bold text-lg">$68</p>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Tactical utility meets performance stretch. Multiple pockets.</p>
+          <button onclick="addToCart('Cargo Training Pants', 68)" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-athlyt-blue transition">
+            ADD TO CART
+          </button>
+        </article>
+
+        <!-- Product 4 - Bundle -->
+        <article class="product-card group sm:col-span-2 lg:col-span-1" data-category="tops bottoms">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/tank-warehouse.png')">
+            <img src="images/tank-warehouse.png" alt="ATHLYT Full Kit" class="w-full h-full object-cover" />
+            <div class="absolute top-4 left-4 px-3 py-1 bg-athlyt-blue text-black text-xs font-bold rounded-full">SAVE 15%</div>
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">The Full Power Kit</h3>
+              <p class="text-white/50 text-sm mt-1">Tank + Cargo Pants</p>
+            </div>
+            <div class="text-right">
+              <p class="font-bold text-lg">$98</p>
+              <p class="text-sm text-white/40 line-through">$116</p>
+            </div>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Complete the look. Limited drop pricing.</p>
+          <button onclick="addToCart('Full Power Kit', 98)" class="w-full py-3.5 rounded-xl bg-athlyt-blue text-black font-bold text-sm hover:bg-white transition">
+            ADD BUNDLE TO CART
+          </button>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-card group" data-category="tops">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/hoodie-sunset.png')">
+            <img src="images/hoodie-sunset.png" alt="ATHLYT Power Hoodie Lifestyle" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">Power Hoodie</h3>
+              <p class="text-white/50 text-sm mt-1">Lifestyle Edition</p>
+            </div>
+            <p class="font-bold text-lg">$78</p>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Same premium fleece. Perfect for post-training or street.</p>
+          <button onclick="addToCart('Power Hoodie', 78)" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-athlyt-blue transition">
+            ADD TO CART
+          </button>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product-card group" data-category="bottoms">
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-athlyt-card mb-5 cursor-pointer" onclick="openLightbox('images/tank-green.png')">
+            <img src="images/tank-green.png" alt="ATHLYT Grey Cargos" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="font-bold text-lg">Relaxed Cargo Pants</h3>
+              <p class="text-white/50 text-sm mt-1">Light Grey</p>
+            </div>
+            <p class="font-bold text-lg">$64</p>
+          </div>
+          <p class="text-sm text-white/40 mt-2 mb-4">Soft-touch fabric. Wide fit for movement and recovery.</p>
+          <button onclick="addToCart('Relaxed Cargo Pants', 64)" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-athlyt-blue transition">
+            ADD TO CART
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE / LOOKBOOK -->
+  <section id="lifestyle" class="py-16 md:py-24 bg-athlyt-card/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-3">Lookbook</h2>
+        <p class="text-white/50 max-w-xl mx-auto">From the gym floor to the streets. ATHLYT moves with you.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox('images/tank-mirror.png')">
+          <img src="images/tank-mirror.png" alt="Mirror selfie" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox('images/tank-curl.png')">
+          <img src="images/tank-curl.png" alt="Warehouse curl" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer md:col-span-1" onclick="openLightbox('images/hoodie-sunset.png')">
+          <img src="images/hoodie-sunset.png" alt="Golden hour" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox('images/tank-green.png')">
+          <img src="images/tank-green.png" alt="Green light" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer col-span-2 md:col-span-2" onclick="openLightbox('images/tank-warehouse.png')">
+          <img src="images/tank-warehouse.png" alt="Power with Urus" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox('images/hoodie-gym-2.png')">
+          <img src="images/hoodie-gym-2.png" alt="Hoodie seated" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer" onclick="openLightbox('images/tank-cable.png')">
+          <img src="images/tank-cable.png" alt="Cable workout" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <p class="text-athlyt-blue font-semibold tracking-widest text-sm uppercase mb-4">Our Philosophy</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+            Built for those who refuse to settle.
+          </h2>
+          <p class="text-white/60 text-lg leading-relaxed mb-6">
+            ATHLYT was created for the athlete who shows up when no one is watching. 
+            Every piece is designed with purpose — technical fabrics that perform under pressure, 
+            and a silhouette that commands respect both in the gym and beyond.
+          </p>
+          <p class="text-white/60 text-lg leading-relaxed mb-8">
+            We don’t do trends. We do power. Transform your body. Own your power.
+          </p>
+          <a href="#shop" class="inline-flex items-center gap-2 text-athlyt-blue font-bold hover:underline">
+            Shop the drop
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="relative">
+          <img src="images/tank-curl.png" alt="ATHLYT athlete" class="rounded-2xl w-full object-cover aspect-[4/5]" />
+          <div class="absolute -bottom-6 -left-6 bg-athlyt-blue text-black p-6 rounded-2xl max-w-[200px] hidden md:block">
+            <p class="font-black text-3xl">100%</p>
+            <p class="text-sm font-medium mt-1">Performance focused design</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-3xl overflow-hidden">
+        <img src="images/hoodie-sunset.png" alt="ATHLYT lifestyle" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 py-20 px-8 text-center">
+          <h2 class="text-3xl md:text-5xl font-black mb-4">Ready to own your power?</h2>
+          <p class="text-white/70 text-lg mb-8 max-w-md mx-auto">Join the ATHLYT community. Limited quantities. No restocks on this drop.</p>
+          <a href="#shop" class="inline-flex px-10 py-4 bg-athlyt-blue text-black font-bold rounded-full hover:bg-white transition">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <div class="flex items-center gap-3">
+            <img src="images/logo.png" alt="ATHLYT" class="h-10 w-10 object-contain" />
+            <span class="text-2xl font-black tracking-tighter">ATH<span class="text-athlyt-blue">LYT</span></span>
+          </div>
+          <p class="text-white/40 text-sm">Transform your body. Own your power.</p>
+        </div>
+        <div class="flex gap-8 text-sm text-white/50">
+          <a href="#shop" class="hover:text-white transition">Shop</a>
+          <a href="#lifestyle" class="hover:text-white transition">Lookbook</a>
+          <a href="#story" class="hover:text-white transition">Story</a>
+          <a href="#" class="hover:text-white transition">Contact</a>
+        </div>
+        <p class="text-white/30 text-sm">© 2026 ATHLYT. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Full size" />
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-athlyt-blue text-black px-6 py-3 rounded-full font-bold text-sm shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50">
+    Added to cart
+  </div>
+
+  <script>
+    let cart = [];
+    let cartCount = 0;
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      cartCount++;
+      const badge = document.getElementById('cartCount');
+      badge.textContent = cartCount;
+      badge.classList.remove('hidden');
+      badge.classList.add('cart-badge');
+      setTimeout(() => badge.classList.remove('cart-badge'), 300);
+
+      // Toast
+      const toast = document.getElementById('toast');
+      toast.textContent = `${name} added • $${price}`;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty. Add some ATHLYT gear!');
+        return;
+      }
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      const list = cart.map(i => `• ${i.name} — $${i.price}`).join('\n');
+      alert(`YOUR CART\n\n${list}\n\nTotal: $${total}\n\n(This is a demo site — checkout not connected)`);
+    });
+
+    // Filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-athlyt-blue', 'text-black', 'font-semibold');
+          b.classList.add('bg-white/5');
+        });
+        btn.classList.add('bg-athlyt-blue', 'text-black', 'font-semibold');
+        btn.classList.remove('bg-white/5');
+
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.product-card').forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
